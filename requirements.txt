@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+pydantic-settings
+openai
+anthropic
+google-genai
+sqlalchemy
+psycopg2-binary
+redis
+celery
+pytest

@@ -8,6 +8,8 @@ from app.adapters.openai_adapter import OpenAIAdapter
 from app.adapters.anthropic_adapter import AnthropicAdapter
 from app.adapters.gemini_adapter import GeminiAdapter
 import time
+from app.db.session import get_db
+from app.models.query_log import QueryLog
 
 router = APIRouter()
 
@@ -35,6 +37,21 @@ def handle_query(request: QueryRequest) -> QueryResponse:
         raise HTTPException(status_code=500, detail=f"Model Call Failed: {str(e)}")
 
     latency = (time.time() - start_time) * 1000
+
+    db = next(get_db())
+    log = QueryLog(
+        query=request.query,
+        task_type=task_type.value,
+        model_used=model_name,
+        response=response_text,
+        latency_ms=latency,
+        estimated_cost=MODEL_REGISTRY[model_name].cost_per_token * len(request.query.split()) * 1.3
+    )
+
+    db.add(log)
+    db.commit()
+    db.close()
+
     return QueryResponse(
         response=response_text,
         model_used=model_name,

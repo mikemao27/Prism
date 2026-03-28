@@ -1,7 +1,7 @@
 from app.router.classifier import TaskType
 from app.router.policies import MODEL_REGISTRY
 
-def select_model(task: TaskType, constraints: dict | None) -> str:
+def select_model(task: TaskType, constraints: dict | None = None) -> str:
     max_utility = float("-inf")
     optimal_model = None
 
