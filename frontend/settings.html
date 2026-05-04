@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prism — Settings</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="settings-page">
+
+    <div class="settings-header">
+      <div class="logo">
+        <div class="logo-mark">◈</div>
+        <span class="logo-name">Prism</span>
+      </div>
+      <button class="btn-back" id="back-btn">← Back to Chat</button>
+    </div>
+
+    <div class="settings-container">
+
+      <!-- Account Section -->
+      <div class="settings-section">
+        <h2 class="settings-section-title">Account</h2>
+        <div class="settings-card">
+          <div class="settings-field">
+            <span class="settings-label">Email</span>
+            <span class="settings-value" id="settings-email">—</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Change Password Section -->
+      <div class="settings-section">
+        <h2 class="settings-section-title">Change Password</h2>
+        <div class="settings-card">
+          <div id="password-error" class="error-msg"></div>
+          <div id="password-success" class="success-msg"></div>
+          <div class="form-group">
+            <label class="form-label">Current Password</label>
+            <input type="password" id="current-password" class="form-input" placeholder="••••••••" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">New Password</label>
+            <input type="password" id="new-password" class="form-input" placeholder="••••••••" />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Confirm New Password</label>
+            <input type="password" id="confirm-password" class="form-input" placeholder="••••••••" />
+          </div>
+          <button class="btn-primary" id="change-password-btn">Update Password</button>
+        </div>
+      </div>
+
+      <!-- API Keys Section -->
+      <div class="settings-section">
+        <h2 class="settings-section-title">API Keys</h2>
+        <p class="settings-description">
+          Add your own API keys to unlock smarter routing to premium models.
+          Prism will automatically route queries to the best model you have access to.
+        </p>
+
+        <div class="settings-card">
+          <div id="keys-error" class="error-msg"></div>
+          <div id="keys-success" class="success-msg"></div>
+          <div class="form-group">
+            <label class="form-label">Provider</label>
+            <select id="key-provider" class="form-input">
+              <option value="openai">OpenAI</option>
+              <option value="anthropic">Anthropic</option>
+              <option value="google">Google</option>
+              <option value="mistral">Mistral</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">API Key</label>
+            <input type="password" id="key-value" class="form-input" placeholder="sk-..." />
+          </div>
+          <div class="form-group">
+            <label class="form-label">Credit Balance (optional)</label>
+            <input type="text" id="key-balance" class="form-input" placeholder="e.g. $10.00" />
+          </div>
+          <button class="btn-primary" id="add-key-btn">Add API Key</button>
+        </div>
+
+        <!-- Existing Keys -->
+        <div id="keys-list" class="keys-list"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/settings.js"></script>
+</body>
+</html>

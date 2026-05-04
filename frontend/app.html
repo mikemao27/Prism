@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prism</title>
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+  <div class="app-layout">
+
+    <!-- ── Sidebar ── -->
+    <aside class="sidebar">
+      <div class="sidebar-header">
+        <div class="logo">
+          <div class="logo-mark">◈</div>
+          <span class="logo-name">Prism</span>
+        </div>
+        <button class="btn-icon" id="new-convo-btn" title="New conversation">+</button>
+      </div>
+
+      <div class="sidebar-search">
+        <input
+          type="text"
+          class="search-input"
+          id="search-input"
+          placeholder="Search conversations..."
+        />
+      </div>
+
+      <div class="sidebar-section-label">Conversations</div>
+      <div class="conversations-list" id="conversations-list">
+        <!-- Populated by JS -->
+      </div>
+
+      <div class="sidebar-footer">
+        <div class="user-avatar" id="user-avatar">?</div>
+        <div class="user-info">
+          <div class="user-email" id="user-email">Loading...</div>
+        </div>
+        <button class="btn-logout" id="settings-btn" title="Settings">⚙</button>
+        <button class="btn-logout" id="logout-btn" title="Sign out">⏻</button>
+      </div>
+    </aside>
+
+    <!-- ── Main Area ── -->
+    <main class="main-area">
+
+      <div class="chat-header">
+        <span class="chat-title" id="chat-title">Select a conversation</span>
+        <div class="model-badge" id="model-badge" style="display: none;">
+          <div class="model-badge-dot"></div>
+          <span id="model-badge-text">—</span>
+        </div>
+      </div>
+
+      <div class="messages-area" id="messages-area">
+        <div class="empty-state" id="empty-state">
+          <div class="empty-icon">◈</div>
+          <div class="empty-title">Welcome to Prism</div>
+          <div class="empty-subtitle">
+            Create a new conversation and Prism will automatically
+            route your query to the best available model.
+          </div>
+        </div>
+      </div>
+
+      <div class="input-area">
+        <div class="input-wrapper">
+          <textarea
+            class="message-input"
+            id="message-input"
+            placeholder="Message Prism..."
+            rows="1"
+          ></textarea>
+          <button class="btn-send" id="send-btn" disabled>↑</button>
+        </div>
+        <div class="input-hint">Enter to send &nbsp;·&nbsp; Shift+Enter for new line</div>
+      </div>
+
+    </main>
+  </div>
+
+  <script src="/static/js/api.js"></script>
+  <script src="/static/js/chat.js"></script>
+</body>
+</html>
